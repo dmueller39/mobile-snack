@@ -1,0 +1,25 @@
+{
+  "name": "mobile-snack",
+  "version": "0.0.0",
+  "description": "mobile ui for expo snack",
+  "author": null,
+  "private": true,
+  "main": "node_modules/expo/AppEntry.js",
+  "dependencies": {
+    "assert": "^1.4.1",
+    "babel-preset-es2015-mod": "^6.6.0",
+    "babel-preset-es3": "^1.0.1",
+    "expo": "^20.0.0",
+    "os": "^0.1.1",
+    "react": "16.0.0-alpha.12",
+    "react-native":
+      "https://github.com/expo/react-native/archive/sdk-20.0.0.tar.gz",
+    "react-native-editor":
+      "git://github.com/dmueller39/react-native-editor#4a0b22d27341f0599445bdbb884686bd9204785f",
+    "snack-sdk": "^0.1.11",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "prettier": "^1.7.0"
+  }
+}
