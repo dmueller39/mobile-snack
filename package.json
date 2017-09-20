@@ -15,7 +15,7 @@
     "react-native":
       "https://github.com/expo/react-native/archive/sdk-20.0.0.tar.gz",
     "react-native-editor":
-      "git://github.com/dmueller39/react-native-editor#4a0b22d27341f0599445bdbb884686bd9204785f",
+      "git://github.com/dmueller39/react-native-editor#aeff3f8e8b221b8b5bea688409955a2b0f1481e9",
     "snack-sdk": "^0.1.11",
     "uuid": "^3.1.0"
   },

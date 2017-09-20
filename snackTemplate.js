@@ -8,9 +8,7 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.paragraph}>
-          This is a mobile-snack template.
-
-          Live reloading is currently not available.
+        Publish to get a shareable url. You get a new url each time you save.
         </Text>
       </View>
     );

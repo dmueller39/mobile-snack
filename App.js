@@ -7,7 +7,16 @@ import {
   Linking,
   Clipboard,
   AsyncStorage,
+  Alert,
 } from 'react-native';
+
+var window = {
+  location: {
+    hostname: 'snack.expo.io',
+  },
+};
+
+global.window.location = window.location;
 
 import Editor from 'react-native-editor';
 
@@ -16,17 +25,16 @@ import template from './snackTemplate';
 
 import { SnackSession } from 'snack-sdk';
 
-var window = {
-  location: {
-    hostname: 'mobile-snack.com',
-  },
-};
-
 async function openSnack(session) {
+  let url = await session.getUrlAsync();
+  Clipboard.setString(url);
+  Alert.alert('copied live url');
+}
+
+async function saveSnack(session) {
   let saveResult = await session.saveAsync();
-  console.log(saveResult);
   Clipboard.setString(saveResult.url);
-  Linking.openURL(saveResult.url);
+  Alert.alert('copied saved url');
 }
 
 async function updateCode(session, code) {
@@ -76,7 +84,11 @@ export default class App extends React.Component {
     console.log('presence', event);
   };
 
-  onPress = () => {
+  onPressSave = () => {
+    saveSnack(this.session);
+  };
+
+  onPressOpen = () => {
     openSnack(this.session);
   };
 
@@ -96,9 +108,14 @@ export default class App extends React.Component {
     }
     return (
       <View style={styles.container}>
-        <Text onPress={this.onPress} style={styles.title}>
-          tap here to publish + open
-        </Text>
+        <View style={styles.buttonBar}>
+          <Text onPress={this.onPressOpen} style={[styles.open, styles.button]}>
+            Open Preview
+          </Text>
+          <Text onPress={this.onPressSave} style={[styles.save, styles.button]}>
+            Save
+          </Text>
+        </View>
         <Editor
           onUpdateData={this.onUpdateCode}
           dimensions={dimensions}
@@ -118,8 +135,27 @@ const styles = StyleSheet.create({
   editor: {
     flex: 1,
   },
-  title: {
-    backgroundColor: '#CCCCCC',
+  buttonBar: {
+    backgroundColor: '#FFFFFF',
     paddingTop: 20,
+    borderBottomWidth: 1,
+    borderColor: '#888888',
+    flexDirection: 'row',
+  },
+  button: {
+    height: 44,
+    padding: 12,
+    color: '#FFFFFF',
+    margin: 4,
+    overflow: 'hidden',
+    borderColor: '#FFFFFF',
+    borderWidth: 0,
+    borderRadius: 10,
+  },
+  open: {
+    backgroundColor: '#18C188',
+  },
+  save: {
+    backgroundColor: '#1888C1',
   },
 });

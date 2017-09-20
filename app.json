@@ -17,7 +17,11 @@
       "assetExts": ["ttf", "mp4"]
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.dmueller.mobile-snack"
+    },
+    "android": {
+      "package": "com.dmueller.mobile-snack"
     }
   }
 }
